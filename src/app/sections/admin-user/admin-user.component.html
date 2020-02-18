@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row col-md-10 py-5">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Email</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userCollection">
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.firstname}}</td>
+          <td>{{user.age}}</td>
+          <td>{{user.email}}</td>
+          <td class="align-middle"><button
+            [swal]="{title: 'Eliminar usuario', text: '¿Seguro que quiere eliminar este usuario?', icon: 'warning'}"
+            (confirm)="deleteUser(user.id)"
+            [showCancelButton]="true"
+            (cancel)="{title: 'Cancelado', text: 'El usuario sigue en pie', icon: 'info'}"
+            (onClose)="{title: 'Exito', text: 'Usuario eliminado correctamente', icon: 'success'}"
+            class="btn btn-danger">
+            <span class="glyphicon glyphicon-remove"></span>Borrar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
